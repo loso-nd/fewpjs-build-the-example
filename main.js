@@ -3,9 +3,29 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+function test() {
+//Call all the like buttons and add an e.listener to the like func
+  const likes = document.querySelectorAll(".like");
 
+  likes.forEach(likeBtn => {
+    likeBtn.addEventListener('click', () => {
+    //console.log(mimicServerCall()) 
+    mimicServerCall() //call the fake server func to stimulate a success and errors
+    .then(() => {console.log("You made it or nah!")})
+    .catch(error => {
+        console.log(error)
+        const hidden = document.getElementById('model')
+        hidden.classList.remove("hidden")
+    } )}
+    )
+  }) 
+  
 
+}
+test()
 
+//we can do a forEach on a node
+//add and event listener on the document and targer the like buttons 
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
