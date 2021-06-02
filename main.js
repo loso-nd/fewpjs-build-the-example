@@ -36,20 +36,23 @@ function test() {
          e.target.classList.remove('activated-heart')
          e.target.innerHTML = '♡'
        }
+      })
+      .catch(error => {
+        console.log("Stimulating fake errors")
+        const hidden = document.getElementById('modal')
+        hidden.classList.remove("hidden")
+          alert('Anisha What\'s really? Talk to me nice? Girl you fine. Finer than Fine.')
+
+          setTimeout( () => {
+            const hidden = document.getElementById('modal')
+            hidden.classList = "hidden"
+
+          }, 5000)
       })  
     })
   })
 }
 
-    //     // else if(EMPTY_HEART == '♡' ) {
-    //     //   let heart = document.querySelector('.like-glyph')
-    //     //   heart.classList.remove('activated-heart')
-    //     //   }
-    //     else {
-    //     let heart = document.querySelector('.like-glyph')
-    //     heart.classList.remove('activated-heart')
-    //     }
-    //   })
     //   .catch(error => {
     //     console.log("Stimulating fake errors")
     //     const hidden = document.getElementById('modal')
