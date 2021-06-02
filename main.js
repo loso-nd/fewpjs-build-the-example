@@ -14,42 +14,59 @@ const FULL_HEART = '♥'
  */
 function test() {
 
-  const likes = document.querySelectorAll(".like");
+  const likes = document.querySelectorAll(".like-glyph");
+  console.log(likes)
 
-  likes.forEach(likeBtn => {
-    likeBtn.addEventListener('click', () => {
-    //console.log(mimicServerCall()) 
-      mimicServerCall() //call the fake server func to stimulate a success and errors
-      .then(() => {
-        console.log("You made it or nah!")
-        if(EMPTY_HEART){
-          let heart = document.querySelector('.like-glyph')
-          let span = document.querySelector('span.like-glyph')
-          heart.className = 'activated-heart'
-          span.innerHTML = FULL_HEART
-        }
-        else {
-        let heart = document.querySelector('.like-glyph')
-        heart.classList.remove('activated-heart')
-        }
-      })
-      .catch(error => {
-        console.log("Stimulating fake errors")
-        const hidden = document.getElementById('modal')
-
-        hidden.classList.remove("hidden")
-
-          alert('Are you working?')
-
-          setTimeout(function(){
-        const hidden = document.getElementById('modal')
-          hidden.className = "hidden"
-          }, 5000);
-        })
-      }
-    )
-  }) 
+    likes.forEach(likeBtn => {
+    likeBtn.addEventListener('click', (e) => {
+    console.log("Heartbreak!") 
+    
+    mimicServerCall() //call the fake server func to stimulate a success and errors
+    //console.log(mimicServerCall())
+    .then( () => {
+      console.log("You made it or nah!")
+      console.log(e.target)
+      console.log(e.target.innerHTML)
+        if(e.target.innerHTML == EMPTY_HEART ){
+          e.target.className = 'activated-heart'
+          e.target.innerHTML = '♥'
+       }
+       else {
+         console.log('Already Loved')
+         e.target.classList.remove('activated-heart')
+         e.target.innerHTML = '♡'
+       }
+      })  
+    })
+  })
 }
+
+    //     // else if(EMPTY_HEART == '♡' ) {
+    //     //   let heart = document.querySelector('.like-glyph')
+    //     //   heart.classList.remove('activated-heart')
+    //     //   }
+    //     else {
+    //     let heart = document.querySelector('.like-glyph')
+    //     heart.classList.remove('activated-heart')
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log("Stimulating fake errors")
+    //     const hidden = document.getElementById('modal')
+
+    //     hidden.classList.remove("hidden")
+
+    //       alert('Are you working?')
+
+    //       setTimeout(function(){
+    //     const hidden = document.getElementById('modal')
+    //       hidden.className = "hidden"
+    //       }, 5000);
+    //     })
+    //   }
+    // )
+  // }) 
+  // })
 test()
 
 
